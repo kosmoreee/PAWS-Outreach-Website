@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css2?family=Adamina&display=swap');
+
+html, body {
+    height: 100%;
+    overflow-y: auto;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Adamina", serif;
+}
+
+body {
+    background: #fffcec;
+}
+
+.footer {
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height: 90px;
+    background-color: #fffcec;
+    z-index: 9999;
+}
+
+.header {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height: 90px;
+    background-color:#fffcec;
+    z-index: 9999;
+}
+
+/* Hide checkbox */
+#sidebar-toggle {
+    display: none;
+}
+
+/* Toggle text (MENU/CLOSE) */
+.toggle-label {
+    position: fixed;
+    top: 35px; /* Adjust as needed */
+    left: 55px;
+    transform: translateX(-50%);
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    z-index: 9999;
+    color: #3b2414;
+    text-decoration: none;
+}
+
+.toggle-label::after {
+    content: "MENU";
+}
+
+#sidebar-toggle:checked + .toggle-label::after {
+    content: "CLOSE";
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10000px;
+    height: 10000px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -920px;
+    width: 920px;
+    height: 100vh;
+    background: #fffcec;
+    padding-top: 50px;
+    transition: left 0.2s;
+    z-index: 9998;
+}
+
+#sidebar-toggle:checked ~ .sidebar {
+    left: 0;
+}
+
+#sidebar-toggle:checked ~ .menu-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Menu List */
+.menu {
+    list-style: none;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.menu li {
+    padding: 7px 0;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #3b2414;
+    font-size: 12px;
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+    padding: 2px 0; 
+}
+
+/* Add underline on hover */
+.menu li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Links - Adjust Position */
+.footer-links {
+    position: absolute;
+    top: 130px; /* Moved higher */
+    left: 840px; /* Adjusted */
+    text-align: right;
+}
+
+.footer-links a {
+    display: block;
+    color: #3b2414;
+    text-decoration: none;
+    font-size: 11px; /* Increased */
+    margin-bottom: 10px;
+}
+
+/* Underline effect on hover */
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Subscribe Button */
+.subscribe {
+    text-align: center;
+    position: absolute;
+    bottom: 300px;
+    width: 100%;
+}
+
+.subscribe button {
+    background: #b8e0e3;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 10px;
+    color: #3b2414;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.subscribe button:hover {
+    background: transparent;
+    border: 1px solid #b8e0e3;
+    color: #b8e0e3;
+    text-decoration: underline;
+    position: relative;
+}
+
+.subscribe button:hover::after {
+    content: " *";
+    font-weight: bold;
+    color: #b8e0e3;
+    position: absolute;
+    right: -15px;
+}
+
+/* Copyright */
+.copyright {
+        text-align: center;
+        position: absolute;
+        bottom: 250px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        font-size: 10px;
+        color: #3b2414;
+        white-space: nowrap;
+        z-index: 9090;
+        line-height: 2;
+    }
+
+.sidebarfull {
+    bottom: 1000px;
+}
+
+.menu li a::after,
+.footer-links a::after {
+    content: " *";
+    font-weight: bold;
+    color: #3b2414;
+    visibility: hidden; /* Keep space reserved */
+}
+
+.menu li a:hover::after,
+.footer-links a:hover::after {
+    visibility: visible; /* Only show when hovered */
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    max-width: 1170px; /* Increase max width */
+    width: 90%; /* Make it more responsive */
+    margin: 40px auto;
+    gap: 20px; /* More spacing */
+    margin-top: 150px;
+}
+
+.hero img {
+    width: 35%;
+    border-radius: 8px;
+}
+
+.hero-text {
+    margin-top: -60px;
+    width: 1000px; /* Adjust width as needed */
+    margin-left: 20px; /* Adjust spacing from the image */
+}
+
+.hero h2 {
+    font-weight: 400;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+}
+
+.donation-links a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #00cc00;
+    font-weight: normal;
+    font-size: 16px;
+    gap: 15px; /* Adjust spacing between buttons */
+    flex-wrap: wrap; /* Ensures responsiveness */
+
+}
+
+/* Container for the cards */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Matches spacing between boxes */
+    margin: 20px auto; /* Adds spacing between rows */
+    margin-bottom: 75px;
+}
+
+/* Individual card styles */
+.card {
+    background: white;
+    padding: 20px;
+    width: 330px;
+    height: 220px;
+    border-radius: 12px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    border-left: 3px solid #00cc00;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Headings */
+.card h3 {
+    font-weight: 700;
+    font-size: 18px;
+    color: black;
+    margin-bottom: 10px;
+    margin-top: 16px;
+}
+
+/* Paragraph */
+.card p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Link styles */
+.card a {
+    text-decoration: none;
+    color: #00cc00;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 25px;   
+}
+
+.support-us-page h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+}
+
+.support-us-page a {
+    font-family: 'Poppins', sans-serif;
+}
+
+.donation-links a {
+    font-family: 'Poppins', sans-serif;
+}
+
+.card a {
+    font-family: 'Poppins', sans-serif;
+}
+
+.support-us-page ul {
+    font-family: 'Poppins', sans-serif;
+}
+
+.support-us-page li {
+    font-family: 'Poppins', sans-serif;
+}
+
+.donation-section a {
+    font-family: 'Poppins', sans-serif;
+}
+
+.bold-text {
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+.donation-section {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+    margin-top: 40px;   
+    font-family: Arial, Helvetica, sans-serif; /* Adjust based on the reference website */
+    color: #333; /* Adjust color if needed */
+    line-height: 1.6; /* Adjusts space between lines */
+    margin-top: -20px; /* Moves everything up */
+}
+
+.donation-content {
+    display: flex;
+    max-width: 1100px;
+    background-color: #fff3d4; /* Light yellow box */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    gap: 20px;
+}
+
+.left-image {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    min-height: 400px;
+    margin-right: 15px;
+}
+
+.left-image img {
+    width: 350px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.donation-details {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.donation-details h3 {
+    margin-top: -130px;
+    font-size: 14px;
+    font-weight: 600; /* Semi-bold */
+    text-transform: uppercase;
+    color: #000000;
+    margin-bottom: 40px; /* Space below subheadings */
+    
+}
+
+.donation-details h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px; /* More space below headings */
+    color: #000000; 
+}
+
+.donation-details ul {
+    list-style: none;
+    padding-left: 0;
+    color: #000000;
+}
+
+.donation-details li {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 15px; /* Increases spacing */
+}
+
+.donation-details p {
+    font-size: 14px;
+    color: #555; /* Slightly lighter text */
+    margin: 3px 0;
+    margin-bottom: 12px; /* More spacing between items */
+}
+
+.note {
+    font-size: 13px;
+    font-style: italic;
+    color: #777;
+}
+
+.qr-code img {
+    width: 200px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.donation-details li::before {
+    content: "▶"; /* Arrow icon */
+    font-size: 12px;
+    margin-right: 5px;
+    color: #333; /* Adjust color if necessary */
+    display: inline-block;
+}
+
+.donation-details h3 a {
+    color: #00cc00; /* Matches the reference site */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.donation-details h1 {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #555;
+    margin-bottom: -2px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.donation-links {
+    display: flex;
+    gap: 20px; /* Adds space between links */
+}
+
+.donation-links a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.donation-links a:hover {
+    color: black;
+    transform: scale(1.1); /* Expands the link on hover */
+}
+
+.card a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.card a:hover {
+    transform: scale(1.1);
+}

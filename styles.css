@@ -1,0 +1,633 @@
+@import url('https://fonts.googleapis.com/css2?family=Adamina&display=swap');
+
+html, body {
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Adamina", serif;
+}
+
+body {
+    background: #fffcec;
+}
+
+.footer {
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height: 90px;
+    background-color: #fffcec;
+    z-index: 9999;
+}
+
+.header {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height: 90px;
+    background-color:#fffcec;
+    z-index: 9999;
+}
+
+/* Hide checkbox */
+#sidebar-toggle {
+    display: none;
+}
+
+/* Toggle text (MENU/CLOSE) */
+.toggle-label {
+    position: fixed;
+    top: 35px; /* Adjust as needed */
+    left: 55px;
+    transform: translateX(-50%);
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    z-index: 9999;
+    color: #3b2414;
+    text-decoration: none;
+}
+
+.toggle-label::after {
+    content: "MENU";
+}
+
+#sidebar-toggle:checked + .toggle-label::after {
+    content: "CLOSE";
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10000px;
+    height: 10000px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 8888;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -920px;
+    width: 920px;
+    height: 100vh;
+    background: #fffcec;
+    padding-top: 50px;
+    transition: left 0.2s;
+    z-index: 9998;
+}
+
+#sidebar-toggle:checked ~ .sidebar {
+    left: 0;
+}
+
+#sidebar-toggle:checked ~ .menu-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Menu List */
+.menu {
+    list-style: none;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.menu li {
+    padding: 7px 0;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #3b2414;
+    font-size: 12px;
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+    padding: 2px 0; 
+}
+
+/* Add underline on hover */
+.menu li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Links - Adjust Position */
+.footer-links {
+    position: absolute;
+    top: 130px; /* Moved higher */
+    left: 840px; /* Adjusted */
+    text-align: right;
+}
+
+.footer-links a {
+    display: block;
+    color: #3b2414;
+    text-decoration: none;
+    font-size: 11px; /* Increased */
+    margin-bottom: 10px;
+}
+
+/* Underline effect on hover */
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Subscribe Button */
+.subscribe {
+    text-align: center;
+    position: absolute;
+    bottom: 300px;
+    width: 100%;
+}
+
+.subscribe button {
+    background: #b8e0e3;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 10px;
+    color: #3b2414;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.subscribe button:hover {
+    background: transparent;
+    border: 1px solid #b8e0e3;
+    color: #b8e0e3;
+    text-decoration: underline;
+    position: relative;
+}
+
+.subscribe button:hover::after {
+    content: " *";
+    font-weight: bold;
+    color: #b8e0e3;
+    position: absolute;
+    right: -15px;
+}
+
+/* Copyright */
+.copyright {
+        text-align: center;
+        position: absolute;
+        bottom: 250px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        font-size: 10px;
+        color: #3b2414;
+        white-space: nowrap;
+        z-index: 9090;
+        line-height: 2;
+    }
+
+.sidebarfull {
+    bottom: 1000px;
+}
+
+.menu li a::after,
+.footer-links a::after {
+    content: " *";
+    font-weight: bold;
+    color: #3b2414;
+    visibility: hidden; /* Keep space reserved */
+}
+
+.menu li a:hover::after,
+.footer-links a:hover::after {
+    visibility: visible; /* Only show when hovered */
+}
+
+.hero-1 {
+    position: relative;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    margin-top: 8px;
+    margin-bottom: -8px;
+}
+
+.hero-1 .hero-image {
+    width: 100%;
+    height: 100vh;  
+    display: block;
+    object-fit: cover;
+}
+
+.hero-1 .hero-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Space between buttons */
+}
+
+.hero-1 .btn {
+    background: #b8e0e3;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 10px;
+    color: #3b2414;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    font-weight: 300;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid transparent;
+    transition: background 0.3s, color 0.3s, border 0.3s;
+    position: relative;
+    top: -20px; /* Moves button up */
+}
+
+.hero-1 .btn:hover {
+    background: transparent;
+    color: #a6e1fa; /* Light blue text */
+    border: 2px solid #a6e1fa; /* Light blue border */
+}
+
+
+.hero-2 {
+    position: relative;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    margin-top: 8px;
+    margin-bottom: -8px;
+}
+
+.hero-2 .hero-image {
+    width: 100%;
+    height: 100vh;  
+    display: block;
+    object-fit: cover;
+}
+
+.hero-2 .hero-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Space between buttons */
+}
+
+.hero-2 .btn {
+    background: #b8e0e3;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 10px;
+    color: #3b2414;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    font-weight: 300;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid transparent;
+    transition: background 0.3s, color 0.3s, border 0.3s;
+    position: relative;
+    top: -20px; /* Moves button up */
+}
+
+.hero-2 .btn:hover {
+    background: transparent;
+    color: #a6e1fa; /* Light blue text */
+    border: 2px solid #a6e1fa; /* Light blue border */
+}
+
+.hero-3 {
+    position: relative;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    margin-top: 8px;
+    margin-bottom: -8px;
+}
+
+.hero-3 .hero-image {
+    width: 100%;
+    height: 100vh;  
+    display: block;
+    object-fit: cover;
+}
+
+.hero-3 .hero-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Space between buttons */
+}
+
+.hero-3 .btn {
+    background: #b8e0e3;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 10px;
+    color: #3b2414;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    font-weight: 300;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid transparent;
+    transition: background 0.3s, color 0.3s, border 0.3s;
+    position: relative;
+    top: -20px; /* Moves button up */
+}
+
+.hero-3 .btn:hover {
+    background: transparent;
+    color: #a6e1fa; /* Light blue text */
+    border: 2px solid #a6e1fa; /* Light blue border */
+}
+
+.hero-4 {
+    position: relative;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    margin-top: 8px;
+    margin-bottom: -8px;
+}
+
+.hero-4 .hero-image {
+    width: 100%;
+    height: 100vh;  
+    display: block;
+    object-fit: cover;
+}
+
+.hero-4 .hero-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Space between buttons */
+}
+
+.hero-4 .btn {
+    background: #b8e0e3;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 10px;
+    color: #3b2414;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    font-weight: 300;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid transparent;
+    transition: background 0.3s, color 0.3s, border 0.3s;
+    position: relative;
+    top: -20px; /* Moves button up */
+}
+
+.hero-4 .btn:hover {
+    background: transparent;
+    color: #a6e1fa; /* Light blue text */
+    border: 2px solid #a6e1fa; /* Light blue border */
+}
+
+.hero-5 {
+    position: relative;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    margin-top: 8px;
+    margin-bottom: 90px;
+}
+
+.hero-5 .hero-image {
+    width: 100%;
+    height: 100vh;  
+    display: block;
+    object-fit: cover;
+}
+
+.hero-5 .hero-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Space between buttons */
+}
+
+.hero-5 .btn {
+    background: #b8e0e3;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 10px;
+    color: #3b2414;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    font-weight: 300;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid transparent;
+    transition: background 0.3s, color 0.3s, border 0.3s;
+    position: relative;
+    top: -20px; /* Moves button up */
+}
+
+.hero-5 .btn:hover {
+    background: transparent;
+    color: #a6e1fa; /* Light blue text */
+    border: 2px solid #a6e1fa; /* Light blue border */
+}
+
+.slider {
+    position: relative;
+    width: 80%;
+    height: 400px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.slides {
+    display: flex;
+    width: 300%;
+    height: 100%;
+}
+
+.slide {
+    width: 100%;
+    transition: 1s;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Radio button navigation */
+input {
+    display: none;
+}
+
+/* Manual Navigation */
+.nav-manual {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.manual-btn:hover {
+    background: white;
+}
+
+.carousel-wrapper-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: -14px;
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.6s ease-in-out; /* Smooth transition */
+    width: 100%;
+}
+
+.carousel-images .image-item {
+    flex: 0 0 33.5%; /* Slightly smaller width */
+    margin: 0;
+    padding: 0;
+    scroll-snap-align: start;
+}
+
+.carousel-images img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input:checked + .carousel-images {
+    transform: translateX(-33.33%);
+}
+
+input#slide2:checked ~ .carousel-images {
+    transform: translateX(-33.33%);
+}
+
+input#slide3:checked ~ .carousel-images {
+    transform: translateX(-66.66%);
+}
+
+input#slide4:checked ~ .carousel-images {
+    transform: translateX(-99.99%);
+}
+
+input#slide5:checked ~ .carousel-images {
+    transform: translateX(-133.33%);
+}
+
+input#slide6:checked ~ .carousel-images {
+    transform: translateX(-166.66%);
+}
+
+input#slide7:checked ~ .carousel-images {
+    transform: translateX(-200%);
+}
+
+input#slide8:checked ~ .carousel-images {
+    transform: translateX(-233.33%);
+}
+
+input#slide9:checked ~ .carousel-images {
+    transform: translateX(-266.66%);
+}
+
+input#slide10:checked ~ .carousel-images {
+    transform: translateX(-300%);
+}
+
+input#slide11:checked ~ .carousel-images {
+    transform: translateX(-333.33%);
+}
+
+input#slide12:checked ~ .carousel-images {
+    transform: translateX(-366.66%);
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-images label {
+    padding: 0 2px;
+}
+
+.carousel-images img {
+    user-select: none;
+    pointer-events: none;
+}
+
